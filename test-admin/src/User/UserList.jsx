@@ -1,20 +1,25 @@
 import * as React from "react";
 import { List, Datagrid, TextField, EmailField, EditButton, DeleteButton } from "react-admin";
 import MyUrlField from '../components/MyUrlField';
+import UserFilter from './UserFilter'
 
 
-const UserList = props => (
-  <List {...props}>
-      <Datagrid rowClick="edit">
-          <TextField source="id" />
-          <TextField source="name" />
-          <TextField source="username" />
-          <EmailField source="email" />
-          <MyUrlField source="website" />
-          <TextField source="company.name" />
-          <EditButton />
-          <DeleteButton />
-      </Datagrid>
+const UserList = ({ permissions, ...props }) => (
+  <List filters={<UserFilter />} {...props}>
+    <Datagrid>
+      <TextField source="id" />
+      <TextField source="name" />
+      <TextField source="username" />
+      <EmailField source="email" />
+      <MyUrlField source="website" />
+      <TextField source="company.name" />
+      {permissions === 'admin' ?
+        <EditButton />
+        : ''}
+      {permissions === 'admin' ?
+        <DeleteButton />
+        : ''}
+    </Datagrid>
   </List>
 );
 

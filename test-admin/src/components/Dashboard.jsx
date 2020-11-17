@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles({
-  span:{
+  span: {
     color: 'red'
   }
 })
@@ -13,7 +13,8 @@ export default () => {
   const classes = useStyles();
   return (
     <Card>
-        <CardHeader title="Welcome to the Administration Panel" />
-        <CardContent>Lorem ipsum sic <span class={classes.span}>dolor</span> amet...</CardContent>
+      <CardHeader title="Welcome to the Administration Panel" />
+      <CardContent>Lorem ipsum sic <span class={classes.span}>dolor</span> amet...</CardContent>
     </Card>
-  )};
+  )
+};
