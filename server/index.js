@@ -18,7 +18,9 @@ server.post('/login', async (req, res) => {
   if (isValidPassword) {
     res.send({
       role: user.role,
-      token: TOKEN
+      identity: user.identity,
+      token: TOKEN,
+
     })
   } else {
     res.status(401).send({

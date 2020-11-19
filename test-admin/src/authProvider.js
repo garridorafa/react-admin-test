@@ -16,6 +16,8 @@ export default {
 			.then((data) => {
 				localStorage.setItem('token', data.token);
 				localStorage.setItem('role', data.role);
+				localStorage.setItem('identity', JSON.stringify(data.identity));
+
 				return true
 			})
 	},
@@ -23,6 +25,7 @@ export default {
 	logout: () => {
 		localStorage.removeItem('token');
 		localStorage.removeItem('role');
+		localStorage.removeItem('identity');
 		return Promise.resolve();
 	},
 	// called when the API returns an error
@@ -44,4 +47,12 @@ export default {
 		const role = localStorage.getItem('role')
 		return role ? Promise.resolve(role) : Promise.reject()
 	},
+	getIdentity: () => {
+		try {
+				const { id, fullName, avatar } = JSON.parse(localStorage.getItem('identity'));
+				return Promise.resolve({ id, fullName, avatar });
+		} catch (error) {
+				return Promise.reject(error);
+		}
+}
 };

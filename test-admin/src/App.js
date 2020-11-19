@@ -1,15 +1,19 @@
 import * as React from "react";
 import { Admin, Resource, fetchUtils } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
+import UserIcon from '@material-ui/icons/Group';
+import PostIcon from '@material-ui/icons/Book';
+
 import UserList from './User/UserList';
 import UserEdit from './User/UserEdit';
 import UserCreate from './User/UserCreate';
 import PostList from './Post/PostList';
 import PostEdit from './Post/PostEdit';
 import PostCreate from './Post/PostCreate';
-import UserIcon from '@material-ui/icons/Group';
-import PostIcon from '@material-ui/icons/Book';
 import Dashboard from './components/Dashboard';
+import Mytheme from './components/MyTheme'
+import MyLoginPage from './components/MyLoginPage';
+
 import authProvider from "./authProvider";
 
 const httpClient = (url, options = {}) => {
@@ -25,7 +29,7 @@ const dataProvider = jsonServerProvider('http://localhost:3001', httpClient);
 
 const App = () => {
   return (
-    <Admin dashboard={Dashboard} dataProvider={dataProvider} authProvider={authProvider} >
+    <Admin theme={Mytheme} loginPage={MyLoginPage} dashboard={Dashboard} dataProvider={dataProvider} authProvider={authProvider} >
       <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
       <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
     </Admin>
@@ -33,3 +37,5 @@ const App = () => {
 };
 
 export default App;
+
+//deepskyblue
