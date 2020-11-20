@@ -3,9 +3,10 @@ const bcrypt = require('bcrypt')
 const usersRepository = require('./users-repository')
 const server = jsonServer.create()
 const router = jsonServer.router('db.json')
-const middlewares = jsonServer.defaults()
+const middlewares = jsonServer.defaults({static: './public'})
 
 const TOKEN = 'RANDOM_TOKEN'
+
 
 server.use(middlewares)
 server.use(jsonServer.bodyParser)
