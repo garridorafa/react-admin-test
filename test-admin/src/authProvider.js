@@ -1,4 +1,4 @@
-export default {
+const authProvider = {
 	login: ({ username, password }) => {
 		return fetch('http://localhost:3001/login', {
 			method: 'post',
@@ -56,3 +56,5 @@ export default {
 		}
 }
 };
+
+export default authProvider;

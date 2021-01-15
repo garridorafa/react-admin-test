@@ -13,6 +13,7 @@ import PostCreate from './Post/PostCreate';
 import Dashboard from './components/Dashboard';
 import Mytheme from './components/MyTheme'
 import MyLoginPage from './components/MyLoginPage';
+import NotFound from './components/NotFound';
 
 import authProvider from "./authProvider";
 
@@ -29,7 +30,13 @@ const dataProvider = jsonServerProvider('http://localhost:3001', httpClient);
 
 const App = () => {
   return (
-    <Admin theme={Mytheme} loginPage={MyLoginPage} dashboard={Dashboard} dataProvider={dataProvider} authProvider={authProvider} >
+    <Admin theme={Mytheme}
+      loginPage={MyLoginPage}
+      dashboard={Dashboard}
+      dataProvider={dataProvider}
+      authProvider={authProvider}
+      catchAll={NotFound}
+    >
       <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
       <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
     </Admin>
